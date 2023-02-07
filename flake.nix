@@ -7,9 +7,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    home-priv = {
+      url = "git+ssh://git@github.com/thought2/nix-home-priv.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, home-priv, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -20,8 +25,8 @@
 
         modules = [
           ./home.nix
-        ] ++
-        (nixpkgs.lib.optional (builtins.pathExists ../priv/priv.nix) ./priv/priv.nix);
+          home-priv.home
+        ];
       };
     };
 }

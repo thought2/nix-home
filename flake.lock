@@ -21,6 +21,49 @@
         "type": "github"
       }
     },
+    "home-manager_2": {
+      "inputs": {
+        "nixpkgs": [
+          "home-priv",
+          "nixpkgs"
+        ],
+        "utils": "utils_2"
+      },
+      "locked": {
+        "lastModified": 1675637696,
+        "narHash": "sha256-tilJS8zCS3PaDfVOfsBZ4zspuam8tc7IMZxtGa/K/uo=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "c43d4a3d6d9ef8ddbe2438362f5c775b4186000b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-priv": {
+      "inputs": {
+        "home-manager": "home-manager_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1675781107,
+        "narHash": "sha256-auy2WQuuaC8BmpXDT2xL+v4g0bVNy0y3EMltj10XHi0=",
+        "ref": "refs/heads/main",
+        "rev": "66909ddbe3f49dcff96d809caa8659550a947d88",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/thought2/nix-home-priv.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/thought2/nix-home-priv.git"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1675673983,
@@ -40,10 +83,26 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "home-priv": "home-priv",
         "nixpkgs": "nixpkgs"
       }
     },
     "utils": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_2": {
       "locked": {
         "lastModified": 1667395993,
         "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
