@@ -49,14 +49,22 @@
   programs.chromium = {
     enable = true;
     extensions = [
-      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # uBlock Origin
       { id = "hdokiejnpimakedhajhdlcegeplioahd"; } # LastPass
       { id = "aghfnjkcakhmadgdomlmlhhaocbkloab"; } # Just Black
+      { id = "egnjhciaieeiiohknchakcodbpgjnchh"; } # Tab Wrangler
     ];
   };
 
   home.packages = [
     pkgs.nixpkgs-fmt
-    pkgs.signal-cli
+    pkgs.signal-desktop
+    pkgs.just
+    pkgs.purs-tidy
+    pkgs.psa
+    pkgs.zephyr
+    pkgs.purs
+    pkgs.spago
+    pkgs.yarn
   ];
 }

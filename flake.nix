@@ -12,12 +12,30 @@
       url = "git+ssh://git@github.com/thought2/nix-home-priv.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    easy-purescript-nix = {
+      url = github:justinwoo/easy-purescript-nix;
+      flake = false;
+    };
   };
 
-  outputs = { nixpkgs, home-manager, home-priv, ... }:
+  outputs = { nixpkgs, home-manager, home-priv, easy-purescript-nix, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import
+        nixpkgs
+        {
+          inherit system;
+          inherit overlays;
+        };
+
+      easy-purescript-nix_ = import easy-purescript-nix { inherit pkgs; };
+
+      overlays = [
+        (prev: final: {
+          inherit (easy-purescript-nix_) purs-tidy psa zephyr purs spago;
+        })
+      ];
     in
     {
       homeConfigurations.m = home-manager.lib.homeManagerConfiguration {
