@@ -43,6 +43,9 @@
 
         modules = [
           ./home.nix
+          ./vscode.nix
+          ./chromium.nix
+          ./packages.nix
           home-priv.home
         ];
       };
