@@ -8,6 +8,10 @@
         vpkgs = pkgs.vscode-extensions;
       in
       [
+        # vpkgs.oderwat.indent-rainbow
+        # vpkgs.brettm12345.nixfmt-vscode
+        # vpkgs.b4dm4n.vscode-nixpkgs-fmt
+        vpkgs.streetsidesoftware.code-spell-checker
         vpkgs.dracula-theme.theme-dracula
         vpkgs.stkb.rewrap
         vpkgs.skellock.just
@@ -15,12 +19,8 @@
         vpkgs.tyriar.sort-lines
         vpkgs.jnoortheen.nix-ide
         vpkgs.gruntfuggly.todo-tree
-        vpkgs.oderwat.indent-rainbow
         vpkgs.esbenp.prettier-vscode
         vpkgs._2gua.rainbow-brackets
-        # vpkgs.brettm12345.nixfmt-vscode
-        # vpkgs.b4dm4n.vscode-nixpkgs-fmt
-        vpkgs.streetsidesoftware.code-spell-checker
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "ide-purescript";

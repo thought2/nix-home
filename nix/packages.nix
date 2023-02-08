@@ -10,6 +10,7 @@
     pkgs.purs
     pkgs.spago
     pkgs.yarn
+    pkgs.nodejs
   ];
 }
 

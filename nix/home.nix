@@ -7,10 +7,6 @@
 
   targets.genericLinux.enable = true;
 
-  programs.home-manager.enable = true;
-
-  programs.bash.enable = true;
-
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -18,7 +14,13 @@
     '';
   };
 
+  programs.home-manager.enable = true;
+
+  programs.bash.enable = true;
+
   programs.git = {
     enable = true;
   };
+
+  programs.fish.enable = true;
 }
