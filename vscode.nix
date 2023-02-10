@@ -26,7 +26,7 @@
           name = "ide-purescript";
           publisher = "nwolverson";
           version = "0.26.1";
-          sha256 = "sha256-tgZ0PnWrSDBNKBB5bKH/Fmq6UVNSRYZ8HJdzFDgxILk=";
+          sha256 = "sha256-ccTuoDSZKf1WsTRX2TxXeHy4eRuOXsAc7rvNZ2b56MU=";
         }
 
         {
