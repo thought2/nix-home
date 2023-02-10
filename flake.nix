@@ -35,7 +35,7 @@
         (prev: final: {
           inherit (easy-purescript-nix_) purs-tidy psa zephyr purs spago;
         })
-        (import ./overlay.nix)
+        (import ./nix/overlay.nix)
       ];
     in
     {
