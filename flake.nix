@@ -35,7 +35,7 @@
         (prev: final: {
           inherit (easy-purescript-nix_) purs-tidy psa zephyr purs spago;
         })
-        ./overlay.nix
+        (import ./overlay.nix)
       ];
     in
     {
@@ -43,10 +43,10 @@
         inherit pkgs;
 
         modules = [
-          ./home.nix
-          ./vscode.nix
-          ./chromium.nix
-          ./packages.nix
+          ./nix/home.nix
+          ./nix/vscode.nix
+          ./nix/chromium.nix
+          ./nix/packages.nix
           home-priv.home
         ];
       };
