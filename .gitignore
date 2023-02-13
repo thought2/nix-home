@@ -7,3 +7,5 @@
 /.purs*
 /.psa*
 /.spago
+/output/*/externs.cbor
+/output/*/corefn.json

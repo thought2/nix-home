@@ -1,35 +1,37 @@
+import * as Home_Types from "../Home.Types/index.js";
+var partial = /* #__PURE__ */ Home_Types.partial();
 var main = function (v) {
-    return {
-        home: {
+    return partial({
+        home: partial({
             username: "m",
             homeDirectory: "/home/m",
             stateVersion: "22.11",
             packages: [ v.pkgs.just ]
-        },
-        targets: {
-            genericLinux: {
+        }),
+        targets: partial({
+            genericLinux: partial({
                 enable: true
-            }
-        },
-        nix: {
+            })
+        }),
+        nix: partial({
             "package": v.pkgs.nixFlakes,
             extraOptions: "experimental-features = nix-command flakes"
-        },
-        programs: {
-            "home-manager": {
+        }),
+        programs: partial({
+            "home-manager": partial({
                 enable: true
-            },
-            bash: {
+            }),
+            bash: partial({
                 enable: true
-            },
-            git: {
+            }),
+            git: partial({
                 enable: true
-            },
-            fish: {
+            }),
+            fish: partial({
                 enable: true
-            }
-        }
-    };
+            })
+        })
+    });
 };
 export {
     main

@@ -2,38 +2,29 @@ module Home where
 
 import Prelude
 
-import Home.Types (HomeConfig, Pkgs)
+import Home.Types (HomeConfig, Pkgs, partial)
 
 main :: { pkgs :: Pkgs } -> HomeConfig
-main { pkgs } =
-  { home:
+main { pkgs } = partial
+  { home: partial
       { username: "m"
       , homeDirectory: "/home/m"
       , stateVersion: "22.11"
       , packages:
-          [ 
-             pkgs.just
-        --   , pkgs.chromiumSetSearches
-        --       { entries:
-        --           [ { name: "Nix Packages"
-        --             , shorthand: "np"
-        --             , url: "https://search.nixos.org/packages?query={searchTerms}"
-        --             }
-        --           ]
-        --       }
+          [ pkgs.just
           ]
       }
-  , targets:
-      { genericLinux: { enable: true }
+  , targets: partial
+      { genericLinux: partial { enable: true }
       }
-  , nix:
+  , nix: partial
       { package: pkgs.nixFlakes
       , extraOptions: "experimental-features = nix-command flakes"
       }
-  , programs:
-      { "home-manager": { enable: true }
-      , "bash": { enable: true }
-      , "git": { enable: true }
-      , "fish": { enable: true }
+  , programs: partial
+      { "home-manager": partial { enable: true }
+      , "bash": partial { enable: true }
+      , "git": partial { enable: true }
+      , "fish": partial { enable: true }
       }
   }

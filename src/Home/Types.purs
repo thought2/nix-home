@@ -3,8 +3,10 @@ module Home.Types where
 import Prelude
 
 import Home.Pkgs.ChromiumSetSearches.Types as ChromiumSetSearches
+import Prim.Row as Row
 import Prim.RowList (class RowToList, RowList)
 import Prim.RowList as RL
+import Unsafe.Coerce (unsafeCoerce)
 
 type Pkgs =
   { writeShellScriptBin :: String -> String -> String
@@ -13,22 +15,43 @@ type Pkgs =
   | ChromiumSetSearches.Pkgs ()
   }
 
+foreign import data Partial :: Row Type -> Type
+
+partial :: forall r r_ r'. Row.Union r r_ r' => Record r -> Partial r'
+partial = unsafeCoerce
+
 type HomeConfig =
-  { home ::
-      { username :: String
-      , homeDirectory :: String
-      , stateVersion :: String
-      , packages :: Array String
-      }
-  , targets :: { genericLinux :: { enable :: Boolean } }
-  , nix ::
-      { package :: String
-      , extraOptions :: String
-      }
-  , programs ::
-      { "home-manager" :: { enable :: Boolean }
-      , "bash" :: { enable :: Boolean }
-      , "git" :: { enable :: Boolean }
-      , "fish" :: { enable :: Boolean }
-      }
-  }
+  Partial
+    ( home ::
+        Partial
+          ( username :: String
+          , homeDirectory :: String
+          , stateVersion :: String
+          , packages :: Array String
+          )
+    , targets ::
+        Partial
+          ( genericLinux ::
+              Partial
+                ( enable :: Boolean
+                )
+          )
+    , nix ::
+        Partial
+          ( package :: String
+          , extraOptions :: String
+          )
+    , programs ::
+        Partial
+          ( "home-manager" :: Partial (enable :: Boolean)
+          , "bash" :: Partial (enable :: Boolean)
+          , "git" :: Partial (enable :: Boolean)
+          , "fish" :: Partial (enable :: Boolean)
+          , "chromium" ::
+              Partial
+                ( enable :: Boolean
+                , extensions :: Array { id :: String }
+                )
+          )
+    )
+
