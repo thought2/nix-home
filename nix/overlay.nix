@@ -3,7 +3,8 @@ let
   pkgs = final;
 in
 {
-  chromium-set-searches = (import ./output/Home/Pkgs.ChromiumSetSearches/default.nix).main;
+  chromiumSetSearches = 
+    ((import ../output/Home.Pkgs.ChromiumSetSearches/default.nix).main { inherit pkgs; }).chromiumSetSearches;
 
   chromium-set-searches' = entries:
     let

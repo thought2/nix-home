@@ -43,7 +43,8 @@
         inherit pkgs;
 
         modules = [
-          ./nix/home.nix
+          # ./nix/home.nix
+          ((import ./output/Home/default.nix).main {inherit pkgs; })
           ./nix/vscode.nix
           ./nix/chromium.nix
           ./nix/packages.nix
