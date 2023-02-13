@@ -3,7 +3,9 @@ let
   pkgs = final;
 in
 {
-  chromium-set-searches = entries:
+  chromium-set-searches = (import ./output/Home/Pkgs.ChromiumSetSearches/default.nix).main;
+
+  chromium-set-searches' = entries:
     let
       inherit (pkgs) lib;
       inherit (lib) pipe concatStringsSep;

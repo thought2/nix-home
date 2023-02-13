@@ -11,6 +11,7 @@
     pkgs.spago
     pkgs.yarn
     pkgs.nodejs
+    pkgs.purenix
   ];
 }
 
