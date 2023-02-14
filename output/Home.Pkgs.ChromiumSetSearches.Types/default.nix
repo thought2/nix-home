@@ -1,5 +1,8 @@
 
 let
-  module = {"Prelude" = import ../Prelude;};
+  module = 
+    { "Nix" = import ../Nix;
+      "Prelude" = import ../Prelude;
+    };
 in
   { }

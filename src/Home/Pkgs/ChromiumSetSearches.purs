@@ -6,6 +6,7 @@ import Data.Foldable (fold)
 import Home.Pkgs.ChromiumSetSearches.Types as Ty
 import Home.Types (Pkgs)
 import Home.Utils (doubleTicks, singleTicks)
+import Nix (toString)
 
 main :: { pkgs :: Pkgs } -> { | Ty.Pkgs () }
 main { pkgs } =
@@ -46,10 +47,10 @@ main { pkgs } =
     in
       pkgs.writeShellScriptBin "chromium-set-searches"
         $ fold
-            [ pkgs.sqlite <> "/bin/sqlite3"
+            [ toString pkgs.sqlite <> "/bin/sqlite3"
             , " "
             , doubleTicks "$HOME/.config/chromium/Default/Web Data"
             , " < "
-            , exportSql
+            , toString exportSql
             ]
 

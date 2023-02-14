@@ -9,11 +9,13 @@ let
       "Home.Pkgs.ChromiumSetSearches.Types" = import ../Home.Pkgs.ChromiumSetSearches.Types;
       "Home.Types" = import ../Home.Types;
       "Home.Utils" = import ../Home.Utils;
+      "Nix" = import ../Nix;
       "Prelude" = import ../Prelude;
     };
   fold = module."Data.Foldable".fold module."Data.Foldable".foldableArray module."Data.Monoid".monoidString;
   mapFlipped = module."Data.Functor".mapFlipped module."Data.Functor".functorArray;
   append = module."Data.Semigroup".append module."Data.Semigroup".semigroupString;
+  toString = module."Nix".toString module."Nix".toStringDerivation;
   main = v: 
     let
       __pattern0 = __fail: 
@@ -58,7 +60,7 @@ let
                                         (module."Home.Utils".doubleTicks "")])
                                         ") "])
                                         ";"];
-                                    __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 22:17 - 41:22";
+                                    __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 23:17 - 42:22";
                                   in
                                     __pattern0 __patternFail
                                 )
@@ -68,17 +70,17 @@ let
                           ]
                         );
                     in
-                      pkgs.writeShellScriptBin "chromium-set-searches" (fold [(append pkgs.sqlite "/bin/sqlite3")
+                      pkgs.writeShellScriptBin "chromium-set-searches" (fold [(append (toString pkgs.sqlite) "/bin/sqlite3")
                       " "
                       (module."Home.Utils".doubleTicks "$HOME/.config/chromium/Default/Web Data")
                       " < "
-                      exportSql]);
-                __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 15:3 - 54:14";
+                      (toString exportSql)]);
+                __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 16:3 - 55:14";
               in
                 __pattern0 __patternFail;
           in
             {chromiumSetSearches = chromiumSetSearches;};
-      __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 10:1 - 10:45";
+      __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 11:1 - 11:45";
     in
       __pattern0 __patternFail;
 in

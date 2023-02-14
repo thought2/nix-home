@@ -1,34 +1,31 @@
 module Home.Types where
 
-import Prelude
-
 import Home.Pkgs.ChromiumSetSearches.Types as ChromiumSetSearches
+import Nix (Derivation)
 import Prim.Row as Row
-import Prim.RowList (class RowToList, RowList)
-import Prim.RowList as RL
 import Unsafe.Coerce (unsafeCoerce)
 
 type Pkgs =
-  { writeShellScriptBin :: String -> String -> String
-  , nixFlakes :: String
-  , sqlite :: String
-  , writeText :: String -> String -> String
-  , "nixpkgs-fmt" :: String
-  , "signal-desktop" :: String
-  , "just" :: String
-  , "purs-tidy" :: String
-  , "psa" :: String
-  , "zephyr" :: String
-  , "purs" :: String
-  , "spago" :: String
-  , "yarn" :: String
-  , "nodejs" :: String
-  , "purenix" :: String
-  , "vscodium" :: String
+  { "writeShellScriptBin" :: String -> String -> Derivation
+  , "nixFlakes" :: Derivation
+  , "sqlite" :: Derivation
+  , "writeText" :: String -> String -> Derivation
+  , "nixpkgs-fmt" :: Derivation
+  , "signal-desktop" :: Derivation
+  , "just" :: Derivation
+  , "purs-tidy" :: Derivation
+  , "psa" :: Derivation
+  , "zephyr" :: Derivation
+  , "purs" :: Derivation
+  , "spago" :: Derivation
+  , "yarn" :: Derivation
+  , "nodejs" :: Derivation
+  , "purenix" :: Derivation
+  , "vscodium" :: Derivation
   , "vscode-extensions" ::
-      { oderwat :: { "indent-rainbow" :: VSCodeExtension }
-      , brettm12345 :: { "nixfmt-vscode" :: VSCodeExtension }
-      , b4dm4n :: { "vscode-nixpkgs-fmt" :: VSCodeExtension }
+      { "oderwat" :: { "indent-rainbow" :: VSCodeExtension }
+      , "brettm12345" :: { "nixfmt-vscode" :: VSCodeExtension }
+      , "b4dm4n" :: { "vscode-nixpkgs-fmt" :: VSCodeExtension }
       , "streetsidesoftware" :: { "code-spell-checker" :: VSCodeExtension }
       , "dracula-theme" :: { "theme-dracula" :: VSCodeExtension }
       , "stkb" :: { "rewrap" :: VSCodeExtension }
@@ -67,7 +64,7 @@ type HomeConfig =
           ( username :: String
           , homeDirectory :: String
           , stateVersion :: String
-          , packages :: Array String
+          , packages :: Array Derivation
           )
     , targets ::
         RecordSlice
@@ -78,7 +75,7 @@ type HomeConfig =
           )
     , nix ::
         RecordSlice
-          ( package :: String
+          ( package :: Derivation
           , extraOptions :: String
           )
     , programs ::
@@ -95,7 +92,7 @@ type HomeConfig =
           , "vscode" ::
               RecordSlice
                 ( enable :: Boolean
-                , package :: String
+                , package :: Derivation
                 , extensions :: Array VSCodeExtension
                 )
           )

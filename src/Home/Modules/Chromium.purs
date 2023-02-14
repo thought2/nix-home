@@ -3,6 +3,7 @@ module Home.Modules.Chromium where
 import Prelude
 
 import Home.Types (HomeConfig, Pkgs, slice)
+import Nix (toString, toStringImpl)
 
 main :: { pkgs :: Pkgs } -> HomeConfig
 main { pkgs } = slice

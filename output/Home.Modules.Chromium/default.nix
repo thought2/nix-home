@@ -2,6 +2,7 @@
 let
   module = 
     { "Home.Types" = import ../Home.Types;
+      "Nix" = import ../Nix;
       "Prelude" = import ../Prelude;
     };
   slice = module."Home.Types".slice module."Prim".undefined;
@@ -42,7 +43,7 @@ let
                   ];
               };
           };
-      __patternFail = builtins.throw "Pattern match failure in src/Home/Modules/Chromium.purs at 7:1 - 7:39";
+      __patternFail = builtins.throw "Pattern match failure in src/Home/Modules/Chromium.purs at 8:1 - 8:39";
     in
       __pattern0 __patternFail;
 in
