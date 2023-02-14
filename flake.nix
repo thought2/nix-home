@@ -49,11 +49,10 @@
         inherit pkgs;
 
         modules = [
-          # ./nix/home.nix
-          ((import ./output/Home/default.nix).main {inherit pkgs; })
+          ((import ./output/Home.Modules.Home/default.nix).main {inherit pkgs; })
           ((import ./output/Home.Modules.Chromium/default.nix).main {inherit pkgs; })
-          ./nix/vscode.nix
-          ./nix/packages.nix
+          ((import ./output/Home.Modules.Packages/default.nix).main {inherit pkgs; })
+          ((import ./output/Home.Modules.VSCode/default.nix).main {inherit pkgs; })
           home-priv.home
         ];
       };

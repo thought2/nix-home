@@ -4,16 +4,16 @@ let
     { "Home.Types" = import ../Home.Types;
       "Prelude" = import ../Prelude;
     };
-  partial = module."Home.Types".partial module."Prim".undefined;
+  slice = module."Home.Types".slice module."Prim".undefined;
   main = v: 
     let
       __pattern0 = __fail: 
         let
           pkgs = v.pkgs;
         in
-          partial 
-          { programs = partial 
-              { chromium = partial 
+          slice 
+          { programs = slice 
+              { chromium = slice 
                   { enable = true;
                     extensions = [{id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";}
                       {id = "hdokiejnpimakedhajhdlcegeplioahd";}
@@ -21,7 +21,7 @@ let
                       {id = "egnjhciaieeiiohknchakcodbpgjnchh";}];
                   };
               };
-            home = partial 
+            home = slice 
               { packages = 
                   [ 
                     ( pkgs.chromiumSetSearches 

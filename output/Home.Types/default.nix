@@ -7,6 +7,6 @@ let
       "Prim.RowList" = import ../Prim.RowList;
       "Unsafe.Coerce" = import ../Unsafe.Coerce;
     };
-  partial = _: module."Unsafe.Coerce".unsafeCoerce;
+  slice = _: module."Unsafe.Coerce".unsafeCoerce;
 in
-  {inherit partial;}
+  {inherit slice;}

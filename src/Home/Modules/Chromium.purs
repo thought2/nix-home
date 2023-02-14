@@ -2,12 +2,12 @@ module Home.Modules.Chromium where
 
 import Prelude
 
-import Home.Types (HomeConfig, Pkgs, partial)
+import Home.Types (HomeConfig, Pkgs, slice)
 
 main :: { pkgs :: Pkgs } -> HomeConfig
-main { pkgs } = partial
-  { programs: partial
-      { chromium: partial
+main { pkgs } = slice
+  { programs: slice
+      { chromium: slice
           { enable: true
           , extensions:
               [ { id: "cjpalhdlnbpafiamejdnhcphjbkeiagm" } -- uBlock Origin
@@ -17,7 +17,7 @@ main { pkgs } = partial
               ]
           }
       }
-  , home: partial
+  , home: slice
       { packages:
           [ pkgs.chromiumSetSearches
               { entries:

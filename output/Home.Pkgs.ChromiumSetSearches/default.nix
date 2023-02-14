@@ -32,8 +32,8 @@ let
                     let
                       exportSql = pkgs.writeText "export.sql" 
                         ( fold 
-                          [ "begin transaction;"
-                            "delete from keywords;"
+                          [ "begin transaction; "
+                            "delete from keywords; "
                             
                             ( fold 
                               ( mapFlipped entries 
@@ -73,7 +73,7 @@ let
                       (module."Home.Utils".doubleTicks "$HOME/.config/chromium/Default/Web Data")
                       " < "
                       exportSql]);
-                __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 15:3 - 62:14";
+                __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 15:3 - 54:14";
               in
                 __pattern0 __patternFail;
           in
