@@ -1,0 +1,4 @@
+{
+  singleTick = "'";
+  doubleTick = ''"'';
+}

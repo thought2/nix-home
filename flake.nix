@@ -13,6 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # purenix = {
+    #   url = "github:purenix-org/purenix/escape-fix";
+    #   #inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     easy-purescript-nix = {
       url = github:justinwoo/easy-purescript-nix;
       flake = false;
@@ -34,6 +39,7 @@
       overlays = [
         (prev: final: {
           inherit (easy-purescript-nix_) purs-tidy psa zephyr purs spago;
+          # purenix2 = purenix.defaultPackage.${system};
         })
         (import ./nix/overlay.nix)
       ];

@@ -8,6 +8,7 @@ let
       "Data.Semigroup" = import ../Data.Semigroup;
       "Home.Pkgs.ChromiumSetSearches.Types" = import ../Home.Pkgs.ChromiumSetSearches.Types;
       "Home.Types" = import ../Home.Types;
+      "Home.Utils" = import ../Home.Utils;
       "Prelude" = import ../Prelude;
     };
   fold = module."Data.Foldable".fold module."Data.Foldable".foldableArray module."Data.Monoid".monoidString;
@@ -44,14 +45,20 @@ let
                                         shorthand = v2.shorthand;
                                         url = v2.url;
                                       in
-                                        fold ["insert into keywords (short_name, keyword, url, favicon_url) values (\\"
-                                        name
-                                        "\, \@"
-                                        shorthand
-                                        "\\, \\"
-                                        url
-                                        "\\, \"\");"];
-                                    __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 21:17 - 30:22";
+                                        fold ["insert into keywords "
+                                        "(short_name, keyword, url, favicon_url) "
+                                        "values "
+                                        (fold ["("
+                                        (fold [(module."Home.Utils".singleTicks name)
+                                        ", "
+                                        (module."Home.Utils".singleTicks (append "@" shorthand))
+                                        ", "
+                                        (module."Home.Utils".singleTicks url)
+                                        ", "
+                                        (module."Home.Utils".doubleTicks "")])
+                                        ") "])
+                                        ";"];
+                                    __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 22:17 - 41:22";
                                   in
                                     __pattern0 __patternFail
                                 )
@@ -61,13 +68,17 @@ let
                           ]
                         );
                     in
-                      pkgs.writeShellScriptBin "chromium-set-searches" (append pkgs.sqlite (append "\"$HOME/.config/chromium/Default/Web Data\" < " exportSql));
-                __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 14:3 - 37:91";
+                      pkgs.writeShellScriptBin "chromium-set-searches" (fold [(append pkgs.sqlite "/bin/sqlite3")
+                      " "
+                      (module."Home.Utils".doubleTicks "$HOME/.config/chromium/Default/Web Data")
+                      " < "
+                      exportSql]);
+                __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 15:3 - 62:14";
               in
                 __pattern0 __patternFail;
           in
             {chromiumSetSearches = chromiumSetSearches;};
-      __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 9:1 - 9:45";
+      __patternFail = builtins.throw "Pattern match failure in src/Home/Pkgs/ChromiumSetSearches.purs at 10:1 - 10:45";
     in
       __pattern0 __patternFail;
 in
