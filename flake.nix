@@ -45,7 +45,7 @@
         modules = [
           # ./nix/home.nix
           ((import ./output/Home/default.nix).main {inherit pkgs; })
-          ((import ./output/Home/Modules/chromium.nix).main {inherit pkgs; })
+          ((import ./output/Home.Modules.Chromium/default.nix).main {inherit pkgs; })
           ./nix/vscode.nix
           ./nix/packages.nix
           home-priv.home

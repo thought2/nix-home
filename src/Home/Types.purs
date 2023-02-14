@@ -12,6 +12,8 @@ type Pkgs =
   { writeShellScriptBin :: String -> String -> String
   , nixFlakes :: String
   , just :: String
+  , sqlite :: String
+  , writeText :: String -> String -> String
   | ChromiumSetSearches.Pkgs ()
   }
 

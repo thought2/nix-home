@@ -9,3 +9,4 @@
 /.spago
 /output/*/externs.cbor
 /output/*/corefn.json
+/output/cache-db.json
