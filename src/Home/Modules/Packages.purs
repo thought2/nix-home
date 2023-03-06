@@ -19,6 +19,9 @@ main { pkgs } = slice
           , pkgs."yarn"
           , pkgs."nodejs"
           , pkgs."purenix"
+          --, pkgs."peek"
+          , pkgs."byzanz"
+          , pkgs."esbuild"
           ]
       }
   }

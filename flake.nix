@@ -18,38 +18,44 @@
     #   #inputs.nixpkgs.follows = "nixpkgs";
     # };
 
+    purifix = {
+      url = "github:purifix/purifix";
+    };
+
     easy-purescript-nix = {
       url = github:justinwoo/easy-purescript-nix;
       flake = false;
     };
   };
 
-  outputs = { nixpkgs, home-manager, home-priv, easy-purescript-nix, ... }:
+  outputs = inputs:
     let
       system = "x86_64-linux";
       pkgs = import
-        nixpkgs
+        inputs.nixpkgs
         {
           inherit system;
           inherit overlays;
         };
 
-      easy-purescript-nix_ = import easy-purescript-nix { inherit pkgs; };
+      easy-purescript-nix = import inputs.easy-purescript-nix { inherit pkgs; };
 
       overlays = [
         (prev: final: {
-          inherit (easy-purescript-nix_) purs-tidy psa zephyr purs spago;
+          inherit (easy-purescript-nix) purs-tidy psa zephyr purs spago;
           # purenix2 = purenix.defaultPackage.${system};
         })
         (import ./nix/overlay.nix)
+        inputs.purifix.overlay
       ];
     in
     {
-      homeConfigurations.m = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.m = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         modules = [
-          home-priv.home
+          inputs.home-priv.home
+          ./nix/home.nix
         ] ++ ((import ./output/Home.Modules/default.nix).main { inherit pkgs; });
       };
     };

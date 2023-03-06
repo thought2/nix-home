@@ -22,6 +22,9 @@ type Pkgs =
   , "nodejs" :: Derivation
   , "purenix" :: Derivation
   , "vscodium" :: Derivation
+  , "peek" :: Derivation
+  , "byzanz" :: Derivation
+  , "esbuild" :: Derivation
   , "vscode-extensions" ::
       { "oderwat" :: { "indent-rainbow" :: VSCodeExtension }
       , "brettm12345" :: { "nixfmt-vscode" :: VSCodeExtension }

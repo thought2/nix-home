@@ -21,7 +21,9 @@ let
               pkgs.spago
               pkgs.yarn
               pkgs.nodejs
-              pkgs.purenix];};};
+              pkgs.purenix
+              pkgs.byzanz
+              pkgs.esbuild];};};
       __patternFail = builtins.throw "Pattern match failure in src/Home/Modules/Packages.purs at 7:1 - 7:39";
     in
       __pattern0 __patternFail;
