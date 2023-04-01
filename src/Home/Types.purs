@@ -38,7 +38,7 @@ type Pkgs =
       , "jnoortheen" :: { "nix-ide" :: VSCodeExtension }
       , "gruntfuggly" :: { "todo-tree" :: VSCodeExtension }
       , "esbenp" :: { "prettier-vscode" :: VSCodeExtension }
-      , "_2gua" :: { "rainbow-brackets" :: VSCodeExtension }
+      , "2gua" :: { "rainbow-brackets" :: VSCodeExtension }
       }
   , "vscode-utils" ::
       { extensionsFromVscodeMarketplace ::

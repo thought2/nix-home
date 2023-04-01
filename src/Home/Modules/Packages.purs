@@ -3,6 +3,7 @@ module Home.Modules.Packages where
 import Prelude
 
 import Home.Types (HomeConfig, Pkgs, slice)
+import Unsafe.Coerce (unsafeCoerce)
 
 main :: { pkgs :: Pkgs } -> HomeConfig
 main { pkgs } = slice
@@ -22,6 +23,7 @@ main { pkgs } = slice
           --, pkgs."peek"
           , pkgs."byzanz"
           , pkgs."esbuild"
+          , unsafeCoerce pkgs # _."tdesktop"
           ]
       }
   }

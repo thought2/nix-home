@@ -5,3 +5,5 @@ switch:
 
 update:
     nix flake update
+
+upgrade: update switch

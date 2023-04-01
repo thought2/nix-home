@@ -23,7 +23,7 @@ main { pkgs } = slice
                 , vpkgs."jnoortheen"."nix-ide"
                 , vpkgs."gruntfuggly"."todo-tree"
                 , vpkgs."esbenp"."prettier-vscode"
-                , vpkgs."_2gua"."rainbow-brackets"
+                , vpkgs."2gua"."rainbow-brackets"
                 ] <>
                   pkgs."vscode-utils".extensionsFromVscodeMarketplace
                     [ { name: "ide-purescript"
