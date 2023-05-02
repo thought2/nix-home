@@ -25,6 +25,11 @@ type Pkgs =
   , "peek" :: Derivation
   , "byzanz" :: Derivation
   , "esbuild" :: Derivation
+  , "tdesktop" :: Derivation
+  , "zoom" :: Derivation
+  , "miniserve" :: Derivation
+  , "esbuild" :: Derivation
+  , "thunderbird" :: Derivation
   , "vscode-extensions" ::
       { "oderwat" :: { "indent-rainbow" :: VSCodeExtension }
       , "brettm12345" :: { "nixfmt-vscode" :: VSCodeExtension }

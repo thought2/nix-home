@@ -16,14 +16,20 @@ main { pkgs } = slice
           , pkgs."psa"
           , pkgs."zephyr"
           , pkgs."purs"
-          , pkgs."spago"
+          --, pkgs."spago"
           , pkgs."yarn"
-          , pkgs."nodejs"
+          -- , pkgs."nodejs"
           , pkgs."purenix"
           --, pkgs."peek"
           , pkgs."byzanz"
           , pkgs."esbuild"
           , unsafeCoerce pkgs # _."tdesktop"
+          , pkgs."tdesktop"
+          , pkgs."zoom"
+          , pkgs."miniserve"
+          , pkgs."esbuild"
+          , pkgs."thunderbird"
+          , unsafeCoerce pkgs # _."htop"
           ]
       }
   }
