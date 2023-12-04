@@ -1,3 +1,0 @@
-{
-  toStringImpl = toString;
-}

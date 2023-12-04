@@ -56,8 +56,7 @@
         modules = [
           inputs.home-priv.home
           ./nix/home.nix
-          home-priv.home
-        ] ++ ((import ./output/Home.Modules/default.nix).main { inherit pkgs; });
+        ];
       };
     };
 }

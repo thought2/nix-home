@@ -1,4 +1,0 @@
-{
-  singleTick = "'";
-  doubleTick = ''"'';
-}

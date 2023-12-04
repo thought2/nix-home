@@ -6,11 +6,18 @@
     pkgs.rlwrap
     pkgs.tdesktop
   ];
-{pkgs, config, ...}: {
+
   programs.bash = {
     enable = true;
     profileExtra = ''
       export XDG_DATA_DIRS=$HOME/.home-manager-share:$XDG_DATA_DIRS
+      export PATH=$HOME/.cabal/bin:$PATH
+    '';
+    initExtra = ''
+      export PATH=$HOME/.cabal/bin:$PATH
+    '';
+    bashrcExtra = ''
+      export PATH=$HOME/.cabal/bin:$PATH
     '';
   };
 
@@ -25,4 +32,14 @@
       '';
     };
   };
+
+  home = {
+    username = "m";
+    homeDirectory = "/home/m";
+    stateVersion = "22.11";
+  };
+
+  targets.genericLinux.enable = true;
+
+  programs."home-manager".enable = true;
 }
