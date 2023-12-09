@@ -5,6 +5,7 @@
     pkgs.nodePackages.typescript-language-server
     pkgs.rlwrap
     pkgs.tdesktop
+    pkgs.fish
   ];
 
   programs.bash = {
@@ -15,11 +16,16 @@
     '';
     initExtra = ''
       export PATH=$HOME/.cabal/bin:$PATH
+      source $HOME/.ghcup/env
     '';
     bashrcExtra = ''
       export PATH=$HOME/.cabal/bin:$PATH
     '';
   };
+
+  nix.package = pkgs.nixFlakes;
+
+  nix.extraOptions = "experimental-features = nix-command flakes";
 
   home.activation = {
     linkDesktopApplications = {
